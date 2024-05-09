@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "350266483523",
+    "project_id": "toll-project-pdm",
+    "storage_bucket": "toll-project-pdm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350266483523:android:d129dfa65b7ff27cb885f6",
+        "android_client_info": {
+          "package_name": "com.example.projecto_final"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBl_QuB1iGyXn-uWwCneIxAXcAbE0iDLBQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
