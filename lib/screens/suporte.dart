@@ -62,7 +62,7 @@ class _SuporteState extends State<Suporte> {
             GestureDetector(
               onTap: () async {
                 // Launch phone dialer with pre-filled number
-                const url = "tel:86994324465";
+                const url = "tel:81004";
                 if (await canLaunchUrl(Uri.parse(url))) {
                   await launchUrl(Uri.parse(url));
                 } else {
