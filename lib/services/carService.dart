@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:projecto_final/models/carro.dart';
 
+
 Future<void> createCarroCollection(Carro carro) async {
   final firestore = FirebaseFirestore.instance;
   final collection = firestore.collection('carros'); // Replace with your desired collection name
