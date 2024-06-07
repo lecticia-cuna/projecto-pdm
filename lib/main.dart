@@ -3,7 +3,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:projecto_final/firebase_options.dart';
-import 'package:projecto_final/screens/login.dart';
 import 'screens/splash.dart';
 
 
@@ -21,13 +20,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    FirebaseStorage.instance.ref("/cars");
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Recarga de portagem",
       home: Splash(),
-      routes: {
-        "/auth" : (_)=> Login()
-      },
     );
   }
 }

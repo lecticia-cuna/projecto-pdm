@@ -1,8 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projecto_final/models/credito.dart';
-import 'package:projecto_final/services/creditService.dart';
 
 class Recarregar extends StatefulWidget {
   const Recarregar({super.key});
@@ -23,6 +21,11 @@ class _RecarregarState extends State<Recarregar> {
   RegExp _phoneRegExp = RegExp(r'^[8][4-5]\d{7}$'); // Mozambican phone pattern
 
   Future<void> _addToFirestore() async {
+    final firestore = FirebaseFirestore.instance;
+    final collection =
+        firestore.collection('recargas'); // Replace with your collection name
+    final docRef = collection.doc(); // Generate a unique document ID
+
     final data = {
       'numeroUsuario': _numeroUsuarioController.text,
       'valorRecarregar': double.parse(_valorRecarregarController.text),
@@ -30,12 +33,12 @@ class _RecarregarState extends State<Recarregar> {
       'pin': _pinController.text,
       'timestamp': Timestamp.now(),
     };
-    Creditservice().recharge(
-      Credito(
-          numero: _numeroUsuarioController.text,
-          valor: double.parse(_valorRecarregarController.text),
-          senha: _pinController.text),
-    );
+
+    await docRef.set(data);
+
+    setState(() {
+      _errorMessage = null; // Clear any previous errors
+    });
   }
 
   @override
@@ -110,20 +113,20 @@ class _RecarregarState extends State<Recarregar> {
                   },
                 ),
                 SizedBox(height: 10),
-                // TextFormField(
-                //   // Make recipient number field immutable
-                //   readOnly: true,
-                //   initialValue: "841114789",
-                //   // Pre-filled value for recipient number
-                //   decoration: InputDecoration(
-                //     hintText: "Número do destinatário", // Clearer label
-                //     border: OutlineInputBorder(
-                //       borderRadius: BorderRadius.all(
-                //         Radius.circular(15),
-                //       ),
-                //     ),
-                //   ),
-                // ),
+                TextFormField(
+                  // Make recipient number field immutable
+                  readOnly: true,
+                  initialValue: "841114789",
+                  // Pre-filled value for recipient number
+                  decoration: InputDecoration(
+                    hintText: "Número do destinatário", // Clearer label
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
+                      ),
+                    ),
+                  ),
+                ),
                 SizedBox(height: 10),
                 TextFormField(
                   obscureText: true,

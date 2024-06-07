@@ -1,7 +1,51 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:projecto_final/models/carro.dart';
-import 'package:projecto_final/services/carService.dart';
+
+class Carro {
+  final double carga;
+  final String lote;
+  final String matricula;
+  final String modelo;
+  final String tipo;
+  final double taxa;
+
+  Carro({
+    required this.carga,
+    required this.lote,
+    required this.matricula,
+    required this.modelo,
+    required this.taxa,
+    required this.tipo,
+  });
+}
+
+List<Carro> simulatedCarros = [
+
+  Carro(
+    carga: 3500.0,
+    lote: '5 Lugares',
+    matricula: 'ABC 072 MP',
+    modelo: 'Toyota',
+    taxa: 40.0,
+    tipo: 'Auris',
+  ),
+  Carro(
+    carga: 2755.0,
+    lote: '7 Lugares',
+    matricula: 'AEF 567 MC',
+    modelo: 'Toyota',
+    taxa: 40.0,
+    tipo: 'Spacio',
+  ),
+  Carro(
+    carga: 3500.0,
+    lote: '5 lugares',
+    matricula: 'AHI 478 MP',
+    modelo: 'BMW',
+    taxa: 0.10,
+    tipo: 'X5',
+  ),
+];
 
 class ListaVeiculos extends StatefulWidget {
   const ListaVeiculos({super.key});
@@ -11,23 +55,6 @@ class ListaVeiculos extends StatefulWidget {
 }
 
 class _ListaVeiculosState extends State<ListaVeiculos> {
-  List<Carro> cars = [];
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    getCars();
-  }
-
-
-  Future getCars() async {
-    final data = await Carservice().getCars();
-    setState(() {
-      cars = data;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,9 +69,9 @@ class _ListaVeiculosState extends State<ListaVeiculos> {
         backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
-        itemCount: cars.length,
+        itemCount: simulatedCarros.length,
         itemBuilder: (BuildContext context, int index) {
-          final carro = cars[index];
+          final carro = simulatedCarros[index];
           return Card(
             margin: const EdgeInsets.all(16.0),
             child: InkWell(

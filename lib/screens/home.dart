@@ -1,10 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:projecto_final/screens/historico.dart';
 import 'package:projecto_final/screens/informacoes.dart';
 import 'package:projecto_final/screens/lista_veiculos.dart';
-import 'package:projecto_final/screens/perfil.dart';
 import 'package:projecto_final/screens/saldo.dart';
 import 'package:projecto_final/screens/suporte.dart';
 
@@ -28,12 +26,12 @@ class _HomeState extends State<Home> {
   ];
 
   final List<Widget> destinationPages = [
-    const Recarregar(),
-    const Saldo(),
-    const ListaVeiculos(),
-    const Historico(),
-    const Informacoes(),
-    const Suporte(), // Replace with the widget of your page4.dart
+    Recarregar(),
+    Saldo(),
+    ListaVeiculos(),
+    Historico(),
+    Informacoes(),
+    Suporte(), // Replace with the widget of your page4.dart
   ];
 
   @override
@@ -45,19 +43,7 @@ class _HomeState extends State<Home> {
           style: GoogleFonts.quicksand(
               color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold),
         ),
-        actions: [
-          GestureDetector(
-            onTap: (){
-              Navigator.of(context).push(MaterialPageRoute(builder: (context)=> Perfil()));
-            },
-            child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0 * 2),
-              child: CircleAvatar(
-                child: Icon(Icons.person),
-              ),
-            ),
-          )
-        ],
+        centerTitle: true,
         toolbarHeight: 160,
         backgroundColor: Colors.blue,
       ),
